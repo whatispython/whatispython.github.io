@@ -271,10 +271,6 @@ var BlogService = /** @class */ (function () {
                                 clearInterval(that.intervalQuery);
                                 observer.error(res.execute_result);
                             }
-                            if (res.status === 2) {
-                                clearInterval(that.intervalQuery);
-                                observer.error("NAS余额不足，请充值后再试");
-                            }
                         });
                     }, 5000);
                 }
@@ -511,7 +507,7 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent.prototype.getAllPost = function () {
         var _this = this;
         this.blogService.getAllPost().subscribe(function (result) {
-            _this.allBlog = JSON.parse(result);
+            _this.allBlog = JSON.parse(result).reverse();
             console.log(_this.allBlog[0]);
             _this.ref.tick();
             $(".blog.segment").removeClass("loading");
@@ -613,7 +609,7 @@ var MineComponent = /** @class */ (function () {
         this.blogService.getAuthorPosts().subscribe(function (result) {
             _this.ngZone.runOutsideAngular(function () {
                 _this.ngZone.run(function () {
-                    _this.allBlog = JSON.parse(result);
+                    _this.allBlog = JSON.parse(result).reverse();
                 });
             });
             $(".blog.segment").removeClass("loading");
@@ -890,10 +886,6 @@ var UserService = /** @class */ (function () {
                             if (res.status === 0) {
                                 clearInterval(that.intervalQuery);
                                 observer.error(res.execute_result);
-                            }
-                            if (res.status === 2) {
-                                clearInterval(that.intervalQuery);
-                                observer.error("NAS余额不足，请充值后再试");
                             }
                         });
                     }, 5000);
