@@ -73,7 +73,7 @@ module.exports = ".ui.secondary.menu .right.menu .item {\r\n  padding-right: 0;\
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui register sidebar vertical menu\">\r\n  <form novalidate #f=\"ngForm\" (ngSubmit)=\"onRegister(f)\" id=\"regForm\">\r\n    <div class=\"item\">\r\n      用户名：\r\n      <div class=\"menu\">\r\n        <a class=\"item\">\r\n          <div class=\"ui input\"><input type=\"text\" name=\"name\" placeholder=\"输入用户名\" required ngModel maxlength=\"64\"></div>\r\n        </a>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"item\">\r\n      个性签名：\r\n      <div class=\"menu\">\r\n        <a class=\"item\">\r\n          <div class=\"ui input\"><input type=\"text\" name=\"signature\" placeholder=\"输入个性签名\" required ngModel maxlength=\"64\"></div>\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <div class=\"ui two buttons\">\r\n        <button class=\"ui button\" type=\"reset\">重置</button>\r\n        <div class=\"or\"></div>\r\n        <button class=\"ui primary button\" type=\"submit\">注册</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n\r\n<div class=\"ui tag sidebar vertical menu\">\r\n  <div class=\"item\">\r\n    标签名：\r\n    <div class=\"menu\">\r\n      <a class=\"item\">\r\n        <div class=\"ui input\"><input type=\"text\" placeholder=\"输入你想要的标签名\"></div>\r\n      </a>\r\n    </div>\r\n  </div>\r\n  <div class=\"item\">\r\n    <button class=\"ui fluid primary button\">创建</button>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ui vertical inverted segment\">\r\n  <div class=\"ui container\"><h3>星云链博客</h3></div>\r\n</div>\r\n\r\n<div class=\"ui home container\">\r\n  <div class=\"ui vertical basic segment\">\r\n    <div class=\"ui secondary pointing menu\">\r\n      <a class=\"active item\" routerLink=\"/home\" (click)=\"menuIndex=1\" [ngClass]=\"{'active': menuIndex==1}\">\r\n        首页\r\n      </a>\r\n      <a class=\"item\" routerLink=\"/mine\" (click)=\"menuIndex=2\" [ngClass]=\"{'active': menuIndex==2}\">\r\n        我的博客\r\n      </a>\r\n      <a class=\"item\" routerLink=\"/post\" (click)=\"menuIndex=3\" [ngClass]=\"{'active': menuIndex==3}\">\r\n        写博文\r\n      </a>\r\n\r\n      <!--div class=\"right menu\">\r\n        <div class=\"item\">\r\n          <div class=\"ui red button\" (click)=\"showRegister()\">注册</div>\r\n        </div>\r\n      </div-->\r\n    </div>\r\n  </div>\r\n\r\n  <router-outlet></router-outlet>\r\n  <app-notification></app-notification>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"ui register sidebar vertical menu\">\r\n  <form novalidate #f=\"ngForm\" (ngSubmit)=\"onRegister(f)\" id=\"regForm\" class=\"ui form\">\r\n    <div class=\"item\">\r\n      用户名：\r\n      <div class=\"menu\">\r\n        <a class=\"item\">\r\n          <div class=\"ui input\"><input type=\"text\" name=\"name\" placeholder=\"输入用户名\" required ngModel maxlength=\"64\"></div>\r\n        </a>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"item\">\r\n      个性签名：\r\n      <div class=\"menu\">\r\n        <a class=\"item\">\r\n          <div class=\"ui input\"><input type=\"text\" name=\"signature\" placeholder=\"输入个性签名\" required ngModel maxlength=\"64\"></div>\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <div class=\"ui two buttons\">\r\n        <button class=\"ui button\" type=\"reset\">重置</button>\r\n        <div class=\"or\"></div>\r\n        <button class=\"ui primary button\" type=\"submit\">注册</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n\r\n<div class=\"ui tag sidebar vertical menu\">\r\n  <div class=\"item\">\r\n    标签名：\r\n    <div class=\"menu\">\r\n      <a class=\"item\">\r\n        <div class=\"ui input\"><input type=\"text\" placeholder=\"输入你想要的标签名\"></div>\r\n      </a>\r\n    </div>\r\n  </div>\r\n  <div class=\"item\">\r\n    <button class=\"ui fluid primary button\">创建</button>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ui vertical inverted segment\">\r\n  <div class=\"ui container\"><h3>星云博客园-开发者的链上家园</h3></div>\r\n</div>\r\n\r\n<div class=\"ui home container\">\r\n  <div class=\"ui vertical basic segment\">\r\n    <div class=\"ui secondary pointing menu\">\r\n      <a class=\"active item\" routerLink=\"/home\" [ngClass]=\"{'active': menuIndex==1}\">\r\n        首页\r\n      </a>\r\n      <a class=\"item\" routerLink=\"/mine\" [ngClass]=\"{'active': menuIndex==2}\">\r\n        我的博客园\r\n      </a>\r\n      <a class=\"item\" routerLink=\"/post\" [ngClass]=\"{'active': menuIndex==3}\">\r\n        我要灌水\r\n      </a>\r\n\r\n      <!--div class=\"right menu\">\r\n        <div class=\"item\">\r\n          <div class=\"ui red button\" (click)=\"showRegister()\">注册</div>\r\n        </div>\r\n      </div-->\r\n    </div>\r\n  </div>\r\n\r\n  <router-outlet></router-outlet>\r\n  <app-notification></app-notification>\r\n</div>\r\n<div class=\"ui inverted vertical footer segment\">\r\n  <div class=\"ui center aligned container\">\r\n    <div class=\"ui horizontal inverted small divided link list\">\r\n      <a class=\"item\" href=\"https://nebulas.io/\">本产品由星云链驱动</a>\r\n      <a class=\"item\" href=\"mailto: 280929507@qq.com\">联系作者</a>\r\n      <a class=\"item\" href=\"https://incentive.nebulas.io/cn/signup.html?invite=sZDCF\">提交DAPP获得100NAS币</a>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -101,10 +101,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = /** @class */ (function () {
     function AppComponent(userService, notification, router) {
+        var _this = this;
         this.userService = userService;
         this.notification = notification;
         this.router = router;
         this.menuIndex = 1;
+        this.router.events.subscribe(function (val) {
+            if (val instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* NavigationEnd */]) {
+                var pathMap = { "/": 1, "/home": 1, "/mine": 2, "/post": 3 };
+                _this.menuIndex = pathMap[val.url];
+            }
+        });
     }
     AppComponent.prototype.ngOnInit = function () {
         var pathName = window.location.pathname, pathMap = { "/": 1, "/home": 1, "/mine": 2, "/post": 3 };
@@ -113,20 +120,20 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.showRegister = function () {
         $(".ui.register.sidebar").sidebar("toggle");
     };
-    AppComponent.prototype.showSendPay = function (pid) {
-        $(".ui.sendpay.sidebar").sidebar("toggle");
-    };
     AppComponent.prototype.onRegister = function (regForm) {
         var _this = this;
         if (regForm.valid) {
             var params = regForm.value;
             params.url = "https://api.adorable.io/avatars/285/" + params.author + ".png";
+            $('#regForm').addClass('loading');
             this.userService.createAuthor(params).subscribe(function (value) {
             }, function (error) {
                 _this.notification.show(error);
+                $('#regForm').removeClass('loading');
                 regForm.reset();
             }, function () {
                 _this.notification.show("用户注册成功");
+                $('#regForm').removeClass('loading');
                 regForm.reset();
                 _this.showRegister();
             });
@@ -141,7 +148,7 @@ var AppComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -258,8 +265,13 @@ var BlogService = /** @class */ (function () {
             _this.nebPay.call(_this.dAppAddress, value, callFunction, callArgs, {
                 listener: function (res) {
                     console.log("交易提交成功");
-                    var txHash = res.txhash;
+                    var txHash = res.txhash, timer = 1;
                     that.intervalQuery = setInterval(function () {
+                        timer += 1;
+                        if (timer > 12) {
+                            clearInterval(that.intervalQuery);
+                            observer.error("交易超时，请检查钱包余额是否充足");
+                        }
                         that.neb.api.getTransactionReceipt(txHash).then(function (res) {
                             console.log(res);
                             if (res.status === 1) {
@@ -287,7 +299,6 @@ var BlogService = /** @class */ (function () {
             _this.neb.setRequest(new __WEBPACK_IMPORTED_MODULE_4_nebulas__["HttpRequest"](__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].http_request_url));
             that.neb.api.call(from, that.dAppAddress, value, nonce, gas_price, gas_limit, contract).then(function (res) {
                 console.log("读取信息成功");
-                console.log(res.result);
                 observer.next(res.result);
             }).catch(function () {
                 observer.error("读取博客列表失败");
@@ -306,7 +317,7 @@ var BlogService = /** @class */ (function () {
                 listener: function (res) {
                     var result = res.result, curUser;
                     if (result === 'null') {
-                        observer.error("似乎没有安装钱包插件，请先装插件再使用");
+                        observer.error("没有安装钱包插件，请先装钱包插件再使用");
                     }
                     else {
                         try {
@@ -319,7 +330,7 @@ var BlogService = /** @class */ (function () {
                             });
                         }
                         catch (err) {
-                            observer.error("获取用户钱包地址出错");
+                            observer.error(res.execute_err || res);
                         }
                     }
                 }
@@ -333,8 +344,13 @@ var BlogService = /** @class */ (function () {
             _this.nebPay.call(_this.dAppAddress, value, callFunction, callArgs, {
                 listener: function (res) {
                     console.log("交易提交成功");
-                    var txHash = res.txhash;
+                    var txHash = res.txhash, timer = 1;
                     that.intervalQuery = setInterval(function () {
+                        timer += 1;
+                        if (timer > 3) {
+                            clearInterval(that.intervalQuery);
+                            observer.error("交易超时，请检查钱包余额是否充足");
+                        }
                         that.neb.api.getTransactionReceipt(txHash).then(function (res) {
                             if (res.status === 1) {
                                 clearInterval(that.intervalQuery);
@@ -385,7 +401,9 @@ module.exports = "<!--div class=\"ui small modal transition hidden\" id=\"blogDe
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlogComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blog_service__ = __webpack_require__("./src/app/blog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__blog_service__ = __webpack_require__("./src/app/blog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__ = __webpack_require__("./src/app/notification/notification.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -397,14 +415,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var BlogComponent = /** @class */ (function () {
-    function BlogComponent(blogService, ref) {
+    function BlogComponent(blogService, ref, notification, router) {
         this.blogService = blogService;
         this.ref = ref;
+        this.notification = notification;
+        this.router = router;
         this.payItems = [];
     }
     BlogComponent.prototype.ngOnInit = function () {
         this.blog = this.blogService.getCurrentBlog();
+        if (!this.blog) {
+            this.router.navigate(["/"]);
+        }
     };
     BlogComponent.prototype.show = function (data) {
         var payItems = data.payItems, commentsHtml = "";
@@ -436,17 +461,23 @@ var BlogComponent = /** @class */ (function () {
                 params_1.ct = new Date().getTime();
                 payItems_1.push(params_1);
                 _this.ref.tick();
-                window.scrollTo(0, 0);
-            }, function (error) { }, function () { });
+            }, function (error) {
+                _this.notification.show(error);
+                target_1.removeClass("loading");
+            }, function () { });
         }
     };
     BlogComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            providers: [__WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */]],
             selector: 'app-blog',
             template: __webpack_require__("./src/app/blog/blog.component.html"),
             styles: [__webpack_require__("./src/app/blog/blog.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__blog_service__["a" /* BlogService */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ApplicationRef */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__blog_service__["a" /* BlogService */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ApplicationRef */],
+            __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], BlogComponent);
     return BlogComponent;
 }());
@@ -465,7 +496,7 @@ module.exports = ""
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui vertical basic blog loading segment\">\r\n  <!--div class=\"ui two column grid\" *ngFor=\"let blog of allBlog\">\r\n    <div class=\"twelve wide column\">\r\n      <div class=\"ui fluid card\">\r\n        <div class=\"content\">\r\n          <div class=\"header\">{{blog.title}}</div>\r\n          <div class=\"meta\">\r\n            <span class=\"right floated time\">{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}</span>\r\n            <span class=\"category\">{{blog.cat}}</span>\r\n          </div>\r\n          <div class=\"description\">\r\n            <p [innerHTML]=\"blog.content\" class=\"rich-content\"></p>\r\n          </div>\r\n        </div>\r\n        <div class=\"extra content\">\r\n          <div class=\"right floated author\">\r\n            <img class=\"ui avatar image\" src=\"https://api.adorable.io/avatars/285/{{blog.author}}.png\">{{blog.authorInfo.name}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"four wide column\">\r\n      <div class=\"ui comments\">\r\n        <h3 class=\"ui dividing header\">打赏列表</h3>\r\n        <div class=\"comment-wrapper\">\r\n          <div class=\"comment\" *ngFor=\"let i of blog.payItems\">\r\n            <a class=\"avatar\">\r\n              <img src=\"https://api.adorable.io/avatars/285/{{i.from}}.png\">\r\n            </a>\r\n            <div class=\"content\">\r\n              <a class=\"author\">{{i.fromName}}</a>\r\n              <div class=\"metadata\">\r\n                <span class=\"date\">{{i.ct | date: 'yyyy-MM-dd HH:mm'}}</span>\r\n              </div>\r\n              <div class=\"text\">\r\n                {{i.comment}}\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <form novalidate #f=\"ngForm\" (ngSubmit)=\"onSendPay(f, blog, $event)\" class=\"ui reply form\">\r\n          <div class=\"field\">\r\n            <label>留下你的大名</label>\r\n            <input type=\"text\" name=\"fromName\" placeholder=\"输入你的名字\" ngModel maxlength=\"16\" required />\r\n          </div>\r\n          <div class=\"field\">\r\n            <label>说点儿什么吧</label>\r\n            <textarea type=\"text\" name=\"comment\" placeholder=\"评论一下这篇博客\" ngModel maxlength=\"32\" required></textarea>\r\n          </div>\r\n\r\n          <button class=\"ui red fluid labeled icon button\">\r\n            <i class=\"dollar sign icon\"></i>打赏\r\n          </button>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div-->\r\n\r\n  <div class=\"ui grid\">\r\n    <div class=\"column\">\r\n      <div class=\"ui raised segment\"  *ngFor=\"let blog of allBlog\" (click)=\"showBlogDetail(blog)\">\r\n        <div class=\"ui red ribbon label\">{{blog.cat}}</div>\r\n        <div class=\"item\">\r\n          <div class=\"content\">\r\n            <h3></h3>\r\n            <h3 class=\"ui red header\">{{blog.title}}</h3>\r\n            <div class=\"meta\">\r\n            </div>\r\n            <div class=\"description\">\r\n              <p [innerHTML]=\"blog.content\" class=\"rich-content\"></p>\r\n            </div>\r\n            <div class=\"extra\">\r\n              <div class=\"ui basic red label\"><i class=\"user icon\"></i>{{blog.authorInfo.name}}</div>\r\n              <div class=\"ui basic red label\"><i class=\"dollar sign icon\"></i>{{blog.value}}</div>\r\n              <div class=\"ui basic red label\">\r\n                <i class=\"comment outline icon\"></i>{{blog.payItems.length}}\r\n              </div>\r\n              <div class=\"ui basic label\">\r\n                <i class=\"calendar alternate outline icon\"></i>{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div class=\"ui vertical basic blog loading segment\">\r\n  <div class=\"ui grid\">\r\n    <div class=\"column\">\r\n      <div class=\"ui raised segment\"  *ngFor=\"let blog of allBlog\" (click)=\"showBlogDetail(blog)\">\r\n        <div class=\"ui red ribbon label\">{{blog.cat}}</div>\r\n        <div class=\"item\">\r\n          <div class=\"content\">\r\n            <h3></h3>\r\n            <h3 class=\"ui red header\">{{blog.title}}</h3>\r\n            <div class=\"meta\">\r\n            </div>\r\n            <div class=\"description\">\r\n              <p [innerHTML]=\"blog.content\" class=\"rich-content\"></p>\r\n            </div>\r\n            <div class=\"extra\">\r\n              <div class=\"ui basic red label\"><i class=\"user icon\"></i>{{blog.authorInfo.name}}</div>\r\n              <div class=\"ui basic red label\"><i class=\"dollar sign icon\"></i>{{blog.value}}</div>\r\n              <div class=\"ui basic red label\">\r\n                <i class=\"comment outline icon\"></i>{{blog.payItems.length}}\r\n              </div>\r\n              <div class=\"ui basic label\">\r\n                <i class=\"calendar alternate outline icon\"></i>{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -568,7 +599,7 @@ module.exports = ""
 /***/ "./src/app/mine/mine.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui vertical basic blog loading segment\">\r\n  <div class=\"ui grid\">\r\n    <div class=\"column\" *ngIf=\"allBlog && allBlog.length\">\r\n      <div class=\"ui raised segment\"  *ngFor=\"let blog of allBlog\" (click)=\"showBlogDetail(blog)\">\r\n        <div class=\"ui red ribbon label\">{{blog.cat}}</div>\r\n        <div class=\"item\">\r\n          <div class=\"content\">\r\n            <h3></h3>\r\n            <h3 class=\"ui red header\">{{blog.title}}</h3>\r\n            <div class=\"meta\">\r\n            </div>\r\n            <div class=\"description\">\r\n              <p [innerHTML]=\"blog.content\" class=\"rich-content\"></p>\r\n            </div>\r\n            <div class=\"extra\">\r\n              <div class=\"ui basic red label\"><i class=\"user icon\"></i>{{blog.authorInfo.name}}</div>\r\n              <div class=\"ui basic red label\"><i class=\"dollar sign icon\"></i>{{blog.value}}</div>\r\n\r\n              <div class=\"ui basic red label\">\r\n                <i class=\"comment outline icon\"></i>{{blog.payItems.length}}\r\n              </div>\r\n              <div class=\"ui basic label\">\r\n                <i class=\"calendar alternate outline icon\"></i>{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"column\" *ngIf=\"allBlog && !allBlog.length\">\r\n        <div class=\"ui positive message\">\r\n          <div class=\"header\">\r\n            你还没有发布过博客\r\n          </div>\r\n          <p></p>\r\n          <a class=\"ui red button\" routerLink=\"/post\">写博文</a>\r\n        </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"ui vertical basic blog loading segment\">\r\n  <div class=\"ui grid\">\r\n    <div class=\"column\" *ngIf=\"allBlog && allBlog.length\">\r\n      <div class=\"ui raised segment\"  *ngFor=\"let blog of allBlog\" (click)=\"showBlogDetail(blog)\">\r\n        <div class=\"ui red ribbon label\">{{blog.cat}}</div>\r\n        <div class=\"item\">\r\n          <div class=\"content\">\r\n            <h3></h3>\r\n            <h3 class=\"ui red header\">{{blog.title}}</h3>\r\n            <div class=\"meta\">\r\n            </div>\r\n            <div class=\"description\">\r\n              <p [innerHTML]=\"blog.content\" class=\"rich-content\"></p>\r\n            </div>\r\n            <div class=\"extra\">\r\n              <div class=\"ui basic red label\"><i class=\"user icon\"></i>{{blog.authorInfo.name}}</div>\r\n              <div class=\"ui basic red label\"><i class=\"dollar sign icon\"></i>{{blog.value}}</div>\r\n\r\n              <div class=\"ui basic red label\">\r\n                <i class=\"comment outline icon\"></i>{{blog.payItems.length}}\r\n              </div>\r\n              <div class=\"ui basic label\">\r\n                <i class=\"calendar alternate outline icon\"></i>{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"column\" *ngIf=\"allBlog && !allBlog.length\">\r\n        <div class=\"ui positive message\">\r\n          <div class=\"header\">\r\n            你还没有发布过博客\r\n          </div>\r\n          <p></p>\r\n          <a class=\"ui red button\" routerLink=\"/post\">去灌水</a>\r\n        </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -708,7 +739,7 @@ module.exports = ""
 /***/ "./src/app/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui raised segment\">\n  <form class=\"ui form\" novalidate #f=\"ngForm\" (ngSubmit)=\"onPostBlog(f)\" id=\"blogForm\">\n    <div class=\"field\">\n      <label>标题</label>\n      <input required ngModel name=\"title\" maxlength=\"64\"/>\n    </div>\n    <div class=\"field\">\n      <label>内容</label>\n      <textarea></textarea>\n    </div>\n    <div class=\"field\">\n      <label>标签</label>\n      <div class=\"ui tag labels\">\n        <a class=\"ui label\" *ngFor=\"let name of catNames; let i = index\" (click)=\"selectedCatIndex=i\" [ngClass]=\"{'red': selectedCatIndex==i }\">{{name}}</a>\n      </div>\n    </div>\n    <div class=\"ui two buttons\">\n      <button class=\"ui button\" type=\"reset\">重置</button>\n      <div class=\"or\"></div>\n      <button class=\"ui red button\" type=\"submit\">发布</button>\n    </div>\n  </form>\n</div>\n"
+module.exports = "<div class=\"ui raised segment\">\r\n  <form class=\"ui form\" novalidate #f=\"ngForm\" (ngSubmit)=\"onPostBlog(f)\" id=\"blogForm\">\r\n    <div class=\"field\">\r\n      <label>标题</label>\r\n      <input required ngModel name=\"title\" maxlength=\"64\"/>\r\n    </div>\r\n    <div class=\"field\">\r\n      <label>内容</label>\r\n      <textarea></textarea>\r\n    </div>\r\n    <div class=\"field\">\r\n      <label>标签</label>\r\n      <div class=\"ui tag labels\">\r\n        <a class=\"ui label\" *ngFor=\"let name of catNames; let i = index\" (click)=\"selectedCatIndex=i\" [ngClass]=\"{'red': selectedCatIndex==i }\">{{name}}</a>\r\n      </div>\r\n    </div>\r\n    <div class=\"ui two buttons\">\r\n      <button class=\"ui button\" type=\"reset\">重置</button>\r\n      <div class=\"or\"></div>\r\n      <button class=\"ui red button\" type=\"submit\">发布</button>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -742,7 +773,8 @@ var PostComponent = /** @class */ (function () {
         this.notification = notification;
         this.router = router;
         this.userService = userService;
-        this.catNames = ["情感", "技术", "社会", "生活", "侃大山", "交友", "相亲", "旅游"];
+        this.catNames = [".NET技术", "编程语言", "软件设计", "Web前端", "企业信息化",
+            "手机开发", "软件工程", "数据库技术", "操作系统", "其他分类", "所有随笔"];
         this.selectedCatIndex = 0;
     }
     PostComponent.prototype.ngOnInit = function () {
@@ -761,7 +793,6 @@ var PostComponent = /** @class */ (function () {
         var _this = this;
         var content = tinymce.activeEditor.getContent();
         this.userService.getAuthor().subscribe(function (value) {
-            console.log(value);
             if (value == 'null') {
                 _this.notification.show("请先注册");
                 $(".ui.register.sidebar").sidebar("toggle");
@@ -777,11 +808,13 @@ var PostComponent = /** @class */ (function () {
                         $("#blogForm").removeClass('loading');
                         $(".ui.register.sidebar").sidebar("toggle");
                     }, function () {
-                        _this.router.navigate(["/"]).then(function () {
+                        _this.router.navigate(["/mine"]).then(function (res) {
                         });
                     });
                 }
             }
+        }, function (error) {
+            _this.notification.show(error);
         });
     };
     PostComponent = __decorate([
@@ -875,8 +908,13 @@ var UserService = /** @class */ (function () {
             _this.nebPay.call(_this.dAppAddress, value, callFunction, callArgs, {
                 listener: function (res) {
                     console.log("交易提交成功");
-                    var txHash = res.txhash;
+                    var txHash = res.txhash, timer = 1;
                     that.intervalQuery = setInterval(function () {
+                        timer += 1;
+                        if (timer > 12) {
+                            clearInterval(that.intervalQuery);
+                            observer.error("交易超时，请检查钱包余额是否充足");
+                        }
                         that.neb.api.getTransactionReceipt(txHash).then(function (res) {
                             console.log(res);
                             if (res.status === 1) {
@@ -919,7 +957,7 @@ var UserService = /** @class */ (function () {
                             });
                         }
                         catch (err) {
-                            observer.error("获取用户钱包地址出错");
+                            observer.error(res.execute_err || res);
                         }
                     }
                 }

@@ -10,7 +10,7 @@ module.exports = " /*\r\n * # Semantic UI - 2.3.1\r\n * https://github.com/Seman
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "body {\r\n  font-family: \"Microsoft YaHei\", \"微软雅黑\", \"Helvetica Neue\", Helvetica,Arial, sans-serif;\r\n}\r\n\r\n.blog.segment {\r\n  min-height: 1000px;\r\n}\r\n\r\n.blog.segment .rich-content {\r\n  height: 150px;\r\n  overflow: hidden;\r\n}\r\n\r\n.blog.segment .ui.header {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.segment .extra {\r\n  text-align: right;\r\n  margin-top: 10px;\r\n}\r\n\r\n.blog.segment .description {\r\n  margin-top: 10px;\r\n}\r\n\r\n.ui.comments {\r\n  width: 100%;\r\n}\r\n\r\n.ui.vertical.footer.segment {\r\n  margin: 5em 0em 0em;\r\n  padding: 2em 0em;\r\n}\r\n\r\n"
+module.exports = "body {\r\n  font-family: \"Microsoft YaHei\", \"微软雅黑\", \"Helvetica Neue\", Helvetica,Arial, sans-serif;\r\n}\r\n\r\n.blog.segment {\r\n  min-height: 800px;\r\n}\r\n\r\n.blog.segment .rich-content {\r\n  height: 100px;\r\n  overflow: hidden;\r\n}\r\n\r\n.blog.segment .ui.header {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.segment .extra {\r\n  text-align: right;\r\n  margin-top: 10px;\r\n}\r\n\r\n.blog.segment .description {\r\n  margin-top: 10px;\r\n}\r\n\r\n.ui.comments {\r\n  width: 100%;\r\n}\r\n\r\n.ui.vertical.footer.segment {\r\n  margin: 5em 0em 0em;\r\n  padding: 2em 0em;\r\n}\r\n\r\n"
 
 /***/ }),
 
