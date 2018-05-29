@@ -431,6 +431,9 @@ var BlogComponent = /** @class */ (function () {
             this.router.navigate(["/"]);
         }
     };
+    BlogComponent.prototype.ngAfterViewInit = function () {
+        window.scrollTo(0, 0);
+    };
     BlogComponent.prototype.show = function (data) {
         var payItems = data.payItems, commentsHtml = "";
         payItems.forEach(function (item) {
