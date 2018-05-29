@@ -445,7 +445,7 @@ var BlogComponent = /** @class */ (function () {
         var _this = this;
         this.blogService.getPostById(this.router.snapshot.params["id"]).subscribe(function (val) {
             _this.blog = JSON.parse(val);
-            document.title = _this.blog.title;
+            document.title = '星云博客园-' + _this.blog.title;
             _this.payItems = _this.blog.payItems;
             _this.ref.tick();
         });
