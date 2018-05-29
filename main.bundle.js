@@ -848,7 +848,7 @@ var PostComponent = /** @class */ (function () {
                         $("#blogForm").removeClass('loading');
                         $(".ui.register.sidebar").sidebar("toggle");
                     }, function () {
-                        window.location.href = "/mine";
+                        window.location.href = "/#/mine";
                     });
                 }
             }
