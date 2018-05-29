@@ -45,15 +45,15 @@ var routes = [
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */] },
     { path: 'mine', component: __WEBPACK_IMPORTED_MODULE_3__mine_mine_component__["a" /* MineComponent */] },
     { path: 'post', component: __WEBPACK_IMPORTED_MODULE_4__post_post_component__["a" /* PostComponent */] },
-    { path: 'blog', component: __WEBPACK_IMPORTED_MODULE_5__blog_blog_component__["a" /* BlogComponent */] }
+    { path: 'blog/:id', component: __WEBPACK_IMPORTED_MODULE_5__blog_blog_component__["a" /* BlogComponent */] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes)],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]]
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forRoot(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -107,7 +107,7 @@ var AppComponent = /** @class */ (function () {
         this.router = router;
         this.menuIndex = 1;
         this.router.events.subscribe(function (val) {
-            if (val instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* NavigationEnd */]) {
+            if (val instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
                 var pathMap = { "/": 1, "/home": 1, "/mine": 2, "/post": 3 };
                 _this.menuIndex = pathMap[val.url];
             }
@@ -148,7 +148,7 @@ var AppComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -306,6 +306,22 @@ var BlogService = /** @class */ (function () {
         });
         return obs;
     };
+    BlogService.prototype.getPostById = function (pid) {
+        var _this = this;
+        var from = 'n1JjwbAQAqr6cV6btULFhP6596o3KkwNSVj', value = "0", nonce = "0", gas_price = "1000000", gas_limit = "2000000", contract = {
+            "function": "getPostById",
+            "args": JSON.stringify([pid])
+        }, that = this, obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */](function (observer) {
+            _this.neb.setRequest(new __WEBPACK_IMPORTED_MODULE_4_nebulas__["HttpRequest"](__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].http_request_url));
+            that.neb.api.call(from, that.dAppAddress, value, nonce, gas_price, gas_limit, contract).then(function (res) {
+                console.log("读取信息成功");
+                observer.next(res.result);
+            }).catch(function () {
+                observer.error("读取博客列表失败");
+            });
+        });
+        return obs;
+    };
     BlogService.prototype.getAuthorPosts = function () {
         var _this = this;
         var value = "0", nonce = "0", gas_price = "1000000", gas_limit = "2000000", contract = {
@@ -347,7 +363,7 @@ var BlogService = /** @class */ (function () {
                     var txHash = res.txhash, timer = 1;
                     that.intervalQuery = setInterval(function () {
                         timer += 1;
-                        if (timer > 3) {
+                        if (timer > 12) {
                             clearInterval(that.intervalQuery);
                             observer.error("交易超时，请检查钱包余额是否充足");
                         }
@@ -391,7 +407,7 @@ module.exports = ""
 /***/ "./src/app/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--div class=\"ui small modal transition hidden\" id=\"blogDetail\">\r\n  <div class=\"header\">\r\n    <p class=\"title\"></p>\r\n  </div>\r\n  <div class=\"blog content\">\r\n  </div>\r\n\r\n  <div class=\"content\">\r\n    <div class=\"ui comments\">\r\n      <h3 class=\"ui dividing header\">评论</h3>\r\n      <div class=\"all-comment\">\r\n        <div class=\"comment\" *ngFor=\"let i of payItems\">\r\n          <a class=\"avatar\">\r\n            <img src=\"https://api.adorable.io/avatars/285/{{i.from}}.png\">\r\n          </a>\r\n          <div class=\"content\">\r\n            <a class=\"author\">{{i.fromName}}</a>\r\n            <div class=\"metadata\">\r\n              <span class=\"date\">Today at 5:42PM</span>\r\n            </div>\r\n            <div class=\"text\">\r\n              {{i.comment}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n  <div class=\"content\">\r\n    <h3 class=\"ui dividing header\">\r\n      打赏\r\n    </h3>\r\n\r\n    <form novalidate #f=\"ngForm\" (ngSubmit)=\"onSendPay(f)\" id=\"sendPayForm\" class=\"ui hidden form\">\r\n      <div class=\"field\">\r\n        <label>请留下你的大名</label>\r\n        <input type=\"text\" name=\"fromName\" placeholder=\"输入你的名字\" ngModel maxlength=\"16\" required />\r\n      </div>\r\n      <div class=\"field\">\r\n        <label>说点儿什么吧</label>\r\n        <input type=\"text\" name=\"comment\" placeholder=\"评论一下这篇博客\" ngModel maxlength=\"128\" required />\r\n      </div>\r\n\r\n      <button class=\"ui secondary submit labeled icon button\">\r\n        <i class=\"dollar sign icon\"></i> 打赏\r\n      </button>\r\n    </form>\r\n  </div>\r\n\r\n  <div class=\"actions\">\r\n    <div class=\"ui primary button\" (click)=\"hide()\">\r\n      关闭\r\n    </div>\r\n  </div>\r\n  <input type=\"hidden\">\r\n</div-->\r\n\r\n<div class=\"ui grid\">\r\n  <div class=\"column\">\r\n    <div class=\"ui raised segment\">\r\n      <div class=\"ui red ribbon label\">{{blog.cat}}</div>\r\n      <div class=\"item\">\r\n        <div class=\"content\">\r\n          <h3></h3>\r\n          <h3 class=\"ui red header\">{{blog.title}}</h3>\r\n          <div class=\"meta\"></div>\r\n          <div class=\"description\">\r\n            <p [innerHTML]=\"blog.content\"></p>\r\n          </div>\r\n          <div class=\"extra\">\r\n            <div class=\"ui basic red label\"><i class=\"user icon\"></i>{{blog.authorInfo.name}}</div>\r\n            <div class=\"ui basic red label\"><i class=\"dollar sign icon\"></i>{{blog.value}}</div>\r\n            <div class=\"ui basic red label\">\r\n              <i class=\"comment outline icon\"></i>{{blog.payItems.length}}\r\n            </div>\r\n            <div class=\"ui basic label\">\r\n              <i class=\"calendar alternate outline icon\"></i>{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui raised segment\">\r\n      <div class=\"ui comments\" style=\"max-width: 100%\">\r\n        <div class=\"ui red dividing header\"><i class=\"dollar sign icon\"></i>我要打赏</div>\r\n\r\n        <form novalidate #f=\"ngForm\" (ngSubmit)=\"onSendPay(f, blog, $event)\" class=\"ui reply form\">\r\n          <div class=\"field\">\r\n            <input type=\"text\" name=\"fromName\" placeholder=\"好汉请留名\" ngModel maxlength=\"16\" required/>\r\n          </div>\r\n          <div class=\"field\">\r\n            <textarea type=\"text\" name=\"comment\" placeholder=\"评论一下这篇博客\" ngModel maxlength=\"32\" required></textarea>\r\n          </div>\r\n\r\n          <button class=\"ui red labeled icon button\">\r\n            <i class=\"dollar sign icon\"></i>打赏\r\n          </button>\r\n        </form>\r\n\r\n        <div class=\"ui red dividing header\"><i class=\"comment outline icon\"></i>{{blog.payItems.length}}个小伙伴打赏过</div>\r\n        <div class=\"comment\" *ngFor=\"let i of blog.payItems\">\r\n          <a class=\"avatar\">\r\n            <img src=\"https://api.adorable.io/avatars/285/{{i.from}}.png\">\r\n          </a>\r\n          <div class=\"content\">\r\n            <a class=\"author\">{{i.fromName}}</a>\r\n            <div class=\"metadata\">\r\n              <span class=\"date\">{{i.ct | date: 'yyyy-MM-dd HH:mm'}}</span>\r\n            </div>\r\n            <div class=\"text\">\r\n              {{i.comment}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n"
+module.exports = "<!--div class=\"ui small modal transition hidden\" id=\"blogDetail\">\r\n  <div class=\"header\">\r\n    <p class=\"title\"></p>\r\n  </div>\r\n  <div class=\"blog content\">\r\n  </div>\r\n\r\n  <div class=\"content\">\r\n    <div class=\"ui comments\">\r\n      <h3 class=\"ui dividing header\">评论</h3>\r\n      <div class=\"all-comment\">\r\n        <div class=\"comment\" *ngFor=\"let i of payItems\">\r\n          <a class=\"avatar\">\r\n            <img src=\"https://api.adorable.io/avatars/285/{{i.from}}.png\">\r\n          </a>\r\n          <div class=\"content\">\r\n            <a class=\"author\">{{i.fromName}}</a>\r\n            <div class=\"metadata\">\r\n              <span class=\"date\">Today at 5:42PM</span>\r\n            </div>\r\n            <div class=\"text\">\r\n              {{i.comment}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n  <div class=\"content\">\r\n    <h3 class=\"ui dividing header\">\r\n      打赏\r\n    </h3>\r\n\r\n    <form novalidate #f=\"ngForm\" (ngSubmit)=\"onSendPay(f)\" id=\"sendPayForm\" class=\"ui hidden form\">\r\n      <div class=\"field\">\r\n        <label>请留下你的大名</label>\r\n        <input type=\"text\" name=\"fromName\" placeholder=\"输入你的名字\" ngModel maxlength=\"16\" required />\r\n      </div>\r\n      <div class=\"field\">\r\n        <label>说点儿什么吧</label>\r\n        <input type=\"text\" name=\"comment\" placeholder=\"评论一下这篇博客\" ngModel maxlength=\"128\" required />\r\n      </div>\r\n\r\n      <button class=\"ui secondary submit labeled icon button\">\r\n        <i class=\"dollar sign icon\"></i> 打赏\r\n      </button>\r\n    </form>\r\n  </div>\r\n\r\n  <div class=\"actions\">\r\n    <div class=\"ui primary button\" (click)=\"hide()\">\r\n      关闭\r\n    </div>\r\n  </div>\r\n  <input type=\"hidden\">\r\n</div-->\r\n\r\n<div class=\"ui grid\">\r\n  <div class=\"column\">\r\n    <div class=\"ui raised segment\" *ngIf=\"blog\">\r\n      <div class=\"ui red ribbon label\">{{blog.cat}}</div>\r\n      <div class=\"item\">\r\n        <div class=\"content\">\r\n          <h3></h3>\r\n          <h3 class=\"ui red header\">{{blog.title}}</h3>\r\n          <div class=\"meta\"></div>\r\n          <div class=\"description\">\r\n            <p [innerHTML]=\"blog.content\"></p>\r\n          </div>\r\n          <div class=\"extra\">\r\n            <div class=\"ui basic red label\"><i class=\"user icon\"></i>{{blog.authorInfo.name}}</div>\r\n            <div class=\"ui basic red label\"><i class=\"dollar sign icon\"></i>{{blog.value}}</div>\r\n            <div class=\"ui basic red label\">\r\n              <i class=\"comment outline icon\"></i>{{blog.payItems.length}}\r\n            </div>\r\n            <div class=\"ui basic label\">\r\n              <i class=\"calendar alternate outline icon\"></i>{{blog.ptime | date: 'yyyy-MM-dd HH:mm'}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"ui raised segment\">\r\n      <div class=\"ui comments\" style=\"max-width: 100%\">\r\n        <div class=\"ui red dividing header\"><i class=\"dollar sign icon\"></i>我要打赏</div>\r\n\r\n        <form novalidate #f=\"ngForm\" (ngSubmit)=\"onSendPay(f, blog, $event)\" class=\"ui reply form\">\r\n          <div class=\"field\">\r\n            <input type=\"text\" name=\"fromName\" placeholder=\"好汉请留名\" ngModel maxlength=\"16\" required/>\r\n          </div>\r\n          <div class=\"field\">\r\n            <textarea type=\"text\" name=\"comment\" placeholder=\"评论一下这篇博客\" ngModel maxlength=\"32\" required></textarea>\r\n          </div>\r\n\r\n          <button class=\"ui red labeled icon button\">\r\n            <i class=\"dollar sign icon\"></i>打赏\r\n          </button>\r\n        </form>\r\n\r\n        <div class=\"ui red dividing header\"><i class=\"comment outline icon\"></i>{{payItems.length}}个小伙伴打赏过</div>\r\n        <div class=\"comment\" *ngFor=\"let i of payItems\">\r\n          <a class=\"avatar\">\r\n            <img src=\"https://api.adorable.io/avatars/285/{{i.from}}.png\">\r\n          </a>\r\n          <div class=\"content\">\r\n            <a class=\"author\">{{i.fromName}}</a>\r\n            <div class=\"metadata\">\r\n              <span class=\"date\">{{i.ct | date: 'yyyy-MM-dd HH:mm'}}</span>\r\n            </div>\r\n            <div class=\"text\">\r\n              {{i.comment}}\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -426,10 +442,12 @@ var BlogComponent = /** @class */ (function () {
         this.payItems = [];
     }
     BlogComponent.prototype.ngOnInit = function () {
-        this.blog = this.blogService.getCurrentBlog();
-        if (!this.blog) {
-            this.router.navigate(["/"]);
-        }
+        var _this = this;
+        this.blogService.getPostById(this.router.snapshot.params["id"]).subscribe(function (val) {
+            _this.blog = JSON.parse(val);
+            _this.payItems = _this.blog.payItems;
+            _this.ref.tick();
+        });
     };
     BlogComponent.prototype.ngAfterViewInit = function () {
         window.scrollTo(0, 0);
@@ -454,7 +472,7 @@ var BlogComponent = /** @class */ (function () {
     BlogComponent.prototype.onSendPay = function (sendPayForm, blog, event) {
         var _this = this;
         if (sendPayForm.valid) {
-            var params_1 = sendPayForm.value, target_1 = $(event.target), payItems_1 = blog.payItems;
+            var params_1 = sendPayForm.value, target_1 = $(event.target), payItems_1 = this.payItems;
             params_1.pid = blog.pid;
             target_1.addClass("loading");
             this.blogService.sendPay(params_1).subscribe(function (value) {
@@ -480,7 +498,7 @@ var BlogComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__blog_service__["a" /* BlogService */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ApplicationRef */],
             __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
     ], BlogComponent);
     return BlogComponent;
 }());
@@ -570,8 +588,7 @@ var HomeComponent = /** @class */ (function () {
         }
     };
     HomeComponent.prototype.showBlogDetail = function (blog) {
-        this.blogService.setCurrentBlog(blog);
-        this.router.navigate(['blog']);
+        this.router.navigate(['blog', blog.pid]);
     };
     HomeComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -583,7 +600,7 @@ var HomeComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__blog_service__["a" /* BlogService */],
             __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ApplicationRef */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -653,8 +670,7 @@ var MineComponent = /** @class */ (function () {
         }, function () { return $(".blog.segment").removeClass("loading"); });
     };
     MineComponent.prototype.showBlogDetail = function (blog) {
-        this.blogService.setCurrentBlog(blog);
-        this.router.navigate(['blog']);
+        this.router.navigate(['blog', blog.pid]);
     };
     MineComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -666,7 +682,7 @@ var MineComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__blog_service__["a" /* BlogService */],
             __WEBPACK_IMPORTED_MODULE_3__notification_notification_component__["a" /* NotificationComponent */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* NgZone */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
     ], MineComponent);
     return MineComponent;
 }());
@@ -829,7 +845,7 @@ var PostComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__blog_service__["a" /* BlogService */],
             __WEBPACK_IMPORTED_MODULE_4__notification_notification_component__["a" /* NotificationComponent */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */]])
     ], PostComponent);
     return PostComponent;
